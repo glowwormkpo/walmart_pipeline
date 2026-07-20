@@ -1,0 +1,11 @@
+definition_version: 2
+entities:
+  streamlit_app:
+    type: streamlit
+    identifier: walmart_dashboard
+    query_warehouse: WALMART_WH
+    main_file: streamlit_app.py
+    artifacts:
+      - pyproject.toml
+      - streamlit_app.py
+      - .streamlit/config.toml

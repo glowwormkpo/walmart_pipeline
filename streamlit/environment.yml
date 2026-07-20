@@ -1,0 +1,11 @@
+# Not used by the actual deployment (see README_deploy.md) -- Snowsight's git-backed
+# Workspace format manages dependencies through pyproject.toml instead. Kept here only
+# for the classic "Streamlit App" flow (Projects -> Streamlit -> + Streamlit App with a
+# Packages panel), if your Snowsight account still offers that older UI.
+name: sf_env
+channels:
+  - snowflake
+dependencies:
+  - streamlit
+  - pandas
+  - snowflake-snowpark-python
