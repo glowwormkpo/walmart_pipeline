@@ -1,0 +1,9 @@
+# Real credentials: never commit
+.env
+scripts/.env
+streamlit/.streamlit/secrets.toml
+# Source CSVs are uploaded to S3, not stored in git
+*.csv
+__pycache__/
+.venv/
+.DS_Store
