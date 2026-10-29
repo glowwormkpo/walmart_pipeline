@@ -117,3 +117,19 @@ column no longer drops a row from the total, and `scripts/load_pipeline.py` exit
 row counts, key uniqueness, or the sales/markdown totals don't reconcile to the raw tables.
 To apply it to an existing account, re-run:
 `python3 load_pipeline.py --csv-dir ~/Downloads --skip-s3`, then redeploy the Streamlit app.
+
+## Project history
+
+The pipeline was built in July 2026 and uploaded to GitHub after its sixth iteration; the October 2026 grain fix was added directly through GitHub. Earlier iterations were not committed separately, so they are summarized here:
+
+| Version | Change |
+|---|---|
+| v1 | First pipeline: S3 upload script, Snowflake SQL (raw tables, COPY INTO, SCD1/SCD2 dimensional model) and a Plotly dashboard |
+| v2 | Added `scripts/load_pipeline.py`, a one-shot loader for the S3 upload and SQL steps |
+| v3 | Fixed a loader bug: `execute_string` is a connection method, not a cursor method |
+| v4 | Replaced Plotly with Streamlit built-in charts so the app runs in Streamlit in Snowflake without extra packages |
+| v5 | Fixed an ambiguous-column error in the dashboard's fact/dimension join |
+| v6 | Rewrote the deploy guide for the Snowsight Workspace flow; added `pyproject.toml` and `snowflake.yml` (first GitHub upload) |
+| v7 | Grain fix: store-level measures moved to `WALMART_STORE_CONDITIONS_FACT`, plus grain and reconciliation checks (October 2026) |
+
+A dbt rebuild of this pipeline, with SCD2 snapshots, an incremental fact table and 71 automated tests, is in [Walmart_dbt](https://github.com/glowwormkpo/Walmart_dbt).
